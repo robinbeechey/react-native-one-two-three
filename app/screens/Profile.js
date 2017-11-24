@@ -13,16 +13,11 @@ const styles = EStyleSheet.create({
     $pink: '$primaryPink',
 });
 
-class Settings extends Component {
+class Profile extends Component {
 
     static propTypes = {
         navigator: PropTypes.object,
         dispatch: PropTypes.func,
-    };
-
-
-    static navigatorStyle = {
-
     };
 
     handleThemePress(color) {
@@ -35,16 +30,6 @@ class Settings extends Component {
                     animated: true,
                     animationType: 'fade',
                 });
-            case styles.$purple || styles.$green:
-                return this.props.navigator.pop({
-                    animated: true,
-                    animationType: 'slide-horizontal',
-                });
-            case styles.$blue:
-                return this.props.navigator.pop({
-                    animated: true,
-                    animationType: 'slide-up',
-                });
             default:
                 return this.props.navigator.pop();
         }
@@ -52,13 +37,13 @@ class Settings extends Component {
 
     render() {
         return (
-            <ScrollView style={{paddingTop: 20, backgroundColor: 'white'}}>
+            <ScrollView style={{paddingTop: 20}}>
                 <StatusBar translucent={false} barStyle="default"/>
                 <ListItem
-                    text="Blue"
+                    text="Profile"
                     selected
                     checkmark={false}
-                    iconBackground={styles.$pink}
+                    iconBackground={styles.$lightPurple}
                 />
                 <Separator/>
             </ScrollView>
@@ -66,4 +51,4 @@ class Settings extends Component {
     }
 }
 
-export default connect()(Settings);
+export default connect()(Profile);

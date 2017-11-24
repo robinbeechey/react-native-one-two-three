@@ -1,5 +1,5 @@
 import App from './app/index';
-import { iconsMap, iconsLoaded } from './app/config/iconLoader';
 
-App();
+var newApp = new App;
+newApp.componentWillMount();
 

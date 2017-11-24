@@ -2,23 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { View, Text, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
-import Icon from './Icon';
 
 
 const ListItem = ({
     text,
     onPress,
     selected =false,
-    checkmark = true,
     visible=true,
-    customIcon = null,
-    iconBackground
+    image
     }) => (
     <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
         <View style={styles.row}>
+            <Image resizeMode="contain" style={styles.image} source={{uri:image}}/>
             <Text style={styles.text}>{text}</Text>
-            {selected ? <Icon checkmark={checkmark} visible={visible} style={styles.icon} iconBackground={iconBackground}/> : <Icon/>}
-            {customIcon}
         </View>
     </TouchableHighlight>
 );

@@ -13,7 +13,7 @@ const styles = EStyleSheet.create({
     $pink: '$primaryPink',
 });
 
-class Settings extends Component {
+class Modal extends Component {
 
     static propTypes = {
         navigator: PropTypes.object,
@@ -66,4 +66,4 @@ class Settings extends Component {
     }
 }
 
-export default connect()(Settings);
+export default connect()(Modal);

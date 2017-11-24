@@ -1,3 +1,5 @@
 import App from './app/index';
 
-App();
+var newApp = new App;
+newApp.componentWillMount();
+
