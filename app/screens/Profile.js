@@ -6,6 +6,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { Ionicons } from 'react-native-navigation';
 import { ListItem, Separator } from '../components/List';
 import { changePrimaryColor} from '../actions/theme';
+import {ProfileHeader} from '../components/ProfileHeader';
 
 const styles = EStyleSheet.create({
     $lightPurple: '$primaryLightPurple',
@@ -36,19 +37,23 @@ class Profile extends Component {
     }
 
     render() {
+        const user = this.props.user;
+        console.log(user);
+
         return (
             <ScrollView style={{paddingTop: 20}}>
                 <StatusBar translucent={false} barStyle="default"/>
-                <ListItem
-                    text="Profile"
-                    selected
-                    checkmark={false}
-                    iconBackground={styles.$lightPurple}
-                />
-                <Separator/>
+                <ProfileHeader name={user.name} image={user.image}/>
+
             </ScrollView>
         )
     }
 }
 
-export default connect()(Profile);
+const mapStateToProps = (state) => {
+    return {
+        user: state.auth.user,
+    };
+};
+
+export default connect(mapStateToProps)(Profile);

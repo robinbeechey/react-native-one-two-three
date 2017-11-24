@@ -21,15 +21,16 @@ const ICON_SIZE = 50;
 
 const mapStateToProps = (state) => {
     return {
-        primaryColor: state.theme.primaryColor,
-        secondaryColor: state.theme.secondaryColor,
+        auth: state.auth
     };
 };
 
-const  user = {
+const user = {
     name: 'Simon macAlex',
+    word: 'word',
     image: 'http://www.jbascollege.edu.in/dept_info/176_dummy-profile.jpg',
-    status: 'Typing...'
+    typingStatus: true,
+    textReveal: false
 };
 
 class Home extends Component {
@@ -59,23 +60,39 @@ class Home extends Component {
         console.log('Carrot Pressed', this.props);
     };
 
+    handleSettingsButton(){
+        console.log('toggle');
+        this.props.navigator.toggleDrawer({
+            side: 'right', // the side of the drawer since you can have two, 'left' / 'right'
+            animated: true, // does the toggle have transition animation or does it happen immediately (optional)
+        });
+    };
+
 
     render() {
 
-        if (this.state.loggedIn) {
+        if (this.props.loggedIn) {
             return (
                 <Container>
-                    <Header/>
+                    <Header onPress={this.handleSettingsButton.bind(this)}/>
                     <WordBox/>
-                    <ListItem text={user.name} image={user.image}/>
-                    <ListItem text={user.name} image={user.image}/>
+                    <ListItem textReveal={user.textReveal} name={user.name} text={user.word} image={user.image}
+                              typingStatus={user.typingStatus}/>
+                    <ListItem textReveal={user.textReveal} name={user.name} text={user.word} image={user.image}
+                              typingStatus={user.typingStatus}/>
+                    <ListItem textReveal={user.textReveal} name={user.name} text={user.word} image={user.image}
+                              typingStatus={false}/>
+                    <ListItem textReveal={user.textReveal} name={user.name} text={''} image={user.image}
+                              typingStatus={false}/>
                 </Container>
             );
         } else {
             return (
-                <Container backgroundColor={this.props.secondaryColor}>
+                <Container>
                     <Ionicons onPress={this.handleCarrotPress} name={`${ICON_PREFIX}-close`} color={ICON_COLOR}
                               size={ICON_SIZE}/>
+                    <Text>Not Logged in</Text>
+                    <Text>This will eventually be a button</Text>
                 </Container>
             );
         }

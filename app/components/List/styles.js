@@ -12,12 +12,27 @@ export default EStyleSheet.create({
         //borderWidth: 2,
         //borderColor: 'black',
     },
-    text: {
+    complete: {
         fontSize: 18,
         fontWeight: "500",
         color: '$primaryPurple',
         alignSelf: 'center',
         paddingLeft: 14
+    },
+    typing: {
+        fontSize: 18,
+        fontWeight: "500",
+        color: '$primaryPink',
+        alignSelf: 'center',
+        paddingLeft: 14
+    },
+    notAccepted:{
+        fontSize: 18,
+        fontWeight: "500",
+        color: '$primaryPurple',
+        alignSelf: 'center',
+        paddingLeft: 14,
+        opacity: 40,
     },
     separator: {
         marginLeft: 20,

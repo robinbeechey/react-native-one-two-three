@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import theme from './themes';
-//import nav from './nav';
+import auth from './auth';
 
 export default combineReducers({
-   theme
+   theme,
+   auth
 });

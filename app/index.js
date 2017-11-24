@@ -8,6 +8,7 @@ import { Navigation } from 'react-native-navigation';
 import { iconsMap, iconsLoaded } from './config/iconLoader';
 import {registerScreens} from './screens';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import firebase from '../firebase';
 
 
 registerScreens(store, Provider);
@@ -37,8 +38,6 @@ const navigatorStyle = {
 };
 
 
-
-
 class App extends Component {
 
     constructor(props) {
@@ -46,7 +45,7 @@ class App extends Component {
         //this.startApp();
     }
 
-    componentWillMount(){
+    componentWillMount() {
         //check if logged in and start appropiate app
         this.startApp();
     }
@@ -84,37 +83,4 @@ class App extends Component {
 }
 
 export default App;
-
-//const ICON_PREFIX = Platform.OS === 'ios' ? 'ios' : 'md';
-//const ICON_COLOR = '#FFF';
-//const ICON_SIZE = 50;
-
-//export default () => {
-//    Navigation.startTabBasedApp({
-//        tabs: [
-//            {
-//                label: 'Home', // tab label as appears under the icon in iOS (optional)
-//                screen: 'wordgame.Home', // unique ID registered wcith Navigation.registerScreen
-//                title: 'Home', // title of the screen as appears in the nav bar (optional)
-//                icon: require('./assets/book.png'),
-//
-//            },
-//            {
-//                label: 'Profile', // tab label as appears under the icon in iOS (optional)
-//                screen: 'wordgame.Profile', // unique ID registered with Navigation.registerScreen
-//                title: 'Profile', // title of the screen as appears in the nav bar (optional)
-//                icon: require('./assets/avatar.png'),
-//
-//            },
-//        ],
-//        drawer: { // optional, add this if you want a side menu drawer in your app
-//            right: { // optional, define if you want a drawer from the right
-//                screen: 'wordgame.Settings', // unique ID registered with Navigation.registerScreen
-//                passProps: {} // simple serializable object that will pass as props to all top screens (optional)
-//            },
-//            disableOpenGesture: false // optional, can the drawer be opened with a swipe instead of button
-//        },
-//    });
-//}
-
 

@@ -6,27 +6,34 @@ import styles from './styles';
 
 const ListItem = ({
     text,
+    name,
     onPress,
-    selected =false,
     visible=true,
-    image
-    }) => (
-    <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
-        <View style={styles.row}>
-            <Image resizeMode="contain" style={styles.image} source={{uri:image}}/>
-            <Text style={styles.text}>{text}</Text>
-        </View>
-    </TouchableHighlight>
-);
+    image,
+    typingStatus,
+    textReveal
+    }) => {
+
+    return (
+        <TouchableHighlight onPress={onPress} underlayColor={styles.$underlayColor}>
+            <View style={styles.row}>
+                <Image resizeMode="contain" style={styles.image} source={{uri:image}}/>
+                {
+                    typingStatus ? <Text style={styles.typing}>Typing...</Text> :
+                    <Text style={styles.complete}>{text && textReveal ? text : name}</Text>
+                }
+            </View>
+        </TouchableHighlight>
+    )
+
+};
 
 ListItem.propTypes = {
     text: PropTypes.string,
     onPress: PropTypes.func,
-    selected: PropTypes.bool,
-    checkmark: PropTypes.bool,
     visible: PropTypes.bool,
-    customIcon: PropTypes.element,
-    iconBackground: PropTypes.string
+    typingStatus: PropTypes.bool,
+    textReveal: PropTypes.bool
 };
 
 export default ListItem;
