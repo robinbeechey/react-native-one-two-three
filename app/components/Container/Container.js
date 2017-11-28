@@ -3,17 +3,22 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import styles from './styles';
 
-const Container = ({children, backgroundColor}) => {
+const Container = ({children, backgroundColor, auth}) => {
     const containerStyles = [styles.container];
     if (backgroundColor){
         containerStyles.push({backgroundColor})
     }
 
+
+
     return (
-        <View style={containerStyles}>
+        <View style={auth ? styles.auth : containerStyles}>
             {children}
         </View>
     );
+
+
+
 };
 
 Container.propTypes = {

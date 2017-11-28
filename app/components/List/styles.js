@@ -42,9 +42,9 @@ export default EStyleSheet.create({
     },
     image: {
         backgroundColor: 'transparent',
-        width: 45,
-        height: 45,
-        borderRadius: 50,
+        width: 46,
+        height: 46,
+        borderRadius: 23,
     },
     iconVisible: {
         backgroundColor: '$primaryPink'

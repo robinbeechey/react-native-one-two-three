@@ -10,4 +10,4 @@ var fConfig = {
     messagingSenderId: config.messagingSenderId
 };
 
-export default !firebase.apps.length ? firebase.initializeApp(fConfig) : firebase.app();
+export default !firebase.apps.length ? firebase.initializeApp(fConfig).firebase_ : firebase.app().firebase_;

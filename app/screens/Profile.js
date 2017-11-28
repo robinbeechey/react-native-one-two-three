@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { ScrollView, StatusBar, View, Text } from 'react-native';
+import { ScrollView, StatusBar, View, Text, Button } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { Ionicons } from 'react-native-navigation';
 import { ListItem, Separator } from '../components/List';
-import { changePrimaryColor} from '../actions/theme';
+import * as actions from '../actions/app';
 import {ProfileHeader} from '../components/ProfileHeader';
+import firebase from '../../firebase';
 
 const styles = EStyleSheet.create({
     $lightPurple: '$primaryLightPurple',
@@ -21,20 +22,15 @@ class Profile extends Component {
         dispatch: PropTypes.func,
     };
 
-    handleThemePress(color) {
-        this.props.dispatch(changePrimaryColor(color));
+    handleLogout() {
+        var _this = this;
 
-        //for different effects
-        switch (color) {
-            case styles.$orange:
-                return this.props.navigator.pop({
-                    animated: true,
-                    animationType: 'fade',
-                });
-            default:
-                return this.props.navigator.pop();
-        }
-    }
+        firebase.auth().signOut().then(function () {
+            _this.props.logout();
+        }).catch(function (error) {
+           console.log('error signing out', error);
+        });
+    };
 
     render() {
         const user = this.props.user;
@@ -44,7 +40,7 @@ class Profile extends Component {
             <ScrollView style={{paddingTop: 20}}>
                 <StatusBar translucent={false} barStyle="default"/>
                 <ProfileHeader name={user.name} image={user.image}/>
-
+                <Button title="Logout" onPress={this.handleLogout.bind(this)}/>
             </ScrollView>
         )
     }
@@ -56,4 +52,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, actions)(Profile);

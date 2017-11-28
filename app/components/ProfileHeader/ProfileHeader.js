@@ -8,7 +8,7 @@ const ProfileHeader = ({name, image}) => {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.image} source={{uri: image}}/>
+            <Image resizeMode="contain" style={styles.image} source={{uri: image}}/>
             <Text style={styles.text}>{name}</Text>
         </View>
     );

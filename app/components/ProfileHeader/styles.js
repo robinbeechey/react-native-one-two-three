@@ -17,6 +17,6 @@ export default EStyleSheet.create({
     image: {
         width: 80,
         height: 80,
-        borderRadius: 80,
+        borderRadius: 40,
     }
 })

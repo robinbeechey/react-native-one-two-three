@@ -4,6 +4,7 @@ import Ranks from './Ranks';
 import Settings from './Settings';
 import Profile from './Profile';
 import Modal from './Modal';
+import Launch from './Launch';
 
 
 export function registerScreens(store, Provider) {
@@ -12,5 +13,6 @@ export function registerScreens(store, Provider) {
 	Navigation.registerComponent('wordgame.Settings', () => Settings, store, Provider);
 	Navigation.registerComponent('wordgame.Profile', () => Profile, store, Provider);
 	Navigation.registerComponent('wordgame.Modal', () => Modal, store, Provider);
+	Navigation.registerComponent('wordgame.Launch', () => Launch, store, Provider);
 }
 
